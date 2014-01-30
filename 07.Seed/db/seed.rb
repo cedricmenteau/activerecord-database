@@ -19,7 +19,7 @@ sample.each do |ingredient|
 		recipe_name = element.search('.m_search_titre_recette a').inner_text
 		recipe_description = element.search('.m_search_result_part4').inner_text
 		recipe_length = recipe_description.match(/(\d+)\smin/)[1].to_i
-		recipe_difficulty = rand(1..9)
+		recipe_difficulty = element.search('etoile1').size
 		Recipe.create(name: recipe_name, description: recipe_description, length: recipe_length, difficulty: recipe_difficulty)
   end
 end                                             
